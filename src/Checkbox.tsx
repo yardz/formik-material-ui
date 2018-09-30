@@ -1,4 +1,3 @@
-// @ts-ignore
 import * as React from 'react';
 import MuiCheckbox, {
   CheckboxProps as MuiCheckboxProps,
@@ -10,19 +9,20 @@ export interface CheckboxProps
   extends FieldProps,
     Omit<MuiCheckboxProps, 'form'> {}
 
-const Checkbox: React.ComponentType<CheckboxProps> = ({
+export const fieldToCheckbox = ({
   field,
   form: { isSubmitting },
   disabled = false,
   ...props
-}) => (
-  <MuiCheckbox
-    disabled={isSubmitting || disabled}
-    {...props}
-    {...field}
-    // TODO: is this the correct way?
-    value={field.value ? 'checked' : ''}
-  />
+}: CheckboxProps) => ({
+  disabled: isSubmitting || disabled,
+  ...props,
+  ...field,
+  value: field.value ? 'checked' : '',
+});
+
+const Checkbox: React.ComponentType<CheckboxProps> = props => (
+  <MuiCheckbox {...fieldToCheckbox(props)} />
 );
 
 Checkbox.displayName = 'FormikMaterialUICheckbox';

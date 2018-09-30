@@ -1,7 +1,17 @@
-import TextField from './TextField';
+import TextField, { fieldToTextField } from './TextField';
 import Switch from './Switch';
-import Checkbox from './Checkbox';
+import Checkbox, { fieldToCheckbox } from './Checkbox';
+import CheckboxWithLabel from './CheckboxWithLabel';
 import Select from './Select';
 import SimpleFileUpload from './SimpleFileUpload';
 
-export { TextField, Switch, Checkbox, Select, SimpleFileUpload };
+export {
+  TextField,
+  fieldToTextField,
+  Switch,
+  Checkbox,
+  fieldToCheckbox,
+  CheckboxWithLabel,
+  Select,
+  SimpleFileUpload,
+};
