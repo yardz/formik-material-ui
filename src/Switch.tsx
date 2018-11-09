@@ -22,7 +22,7 @@ export const fieldToSwitch = ({
     disabled: isSubmitting || disabled,
     ...props,
     ...field,
-    // TODO: is this the correct way?
+    value: field.name,
     checked: field.value,
   };
 };
